@@ -9,62 +9,84 @@
     <title>Document</title>
 </head>
 
-
 <body onload="onInit()">
     <header>
-        <!-- <div class="main-screen" onclick="onToggleMenu()"></div> -->
         <div class="main-header">
-            <div class="logo"><img src="logo/LOGO.png" alt="" /> </div>
-            <ul class="main-nav flex clear-list">
-                <li><a href="index.html">Gallery</a></li>
-                <li onclick="onMemeClicked()"><a href="#">Memes</a></li>
-                <li onclick="onAboutClicked()"><a href="#">About</a></li>
-            </ul>
-            <button class="btn-menu" onclick="onToggleMenu()">☰</button>
+            <section class="logo">genmeme</section>
+            <nav class="main-nav">
+                <ul class="clean-list">
+                    <li onclick="onGalleryClicked()">Gallery</li>
+                    <li onclick="onMemeClicked()">Memes</li>
+                    <li onclick="onAboutClicked()">About</li>
+                </ul>
+                <!-- <button class="btn-menu" onclick="onToggleMenu()">☰</button> -->
+            </nav>
         </div>
 
     </header>
-    <div class="search-container">
-        <form action="" class="search-bar" autocomplete="off">
-            <input class="input-search" oninput="onSearchImg(this.value)" type="search" name="search" pattern=".*\S.*"
-                required />
-            <button class="search-btn" type="submit">Search</button>
-        </form>
-    </div>
 
     <main class="main-gallery">
-        <input type="text" placeholder="search by tags">
+        <div class="search-container">
+            <input type="text" placeholder="search by tags">
+        </div>
         <div class="images-container">
         </div>
     </main>
 
     <main class="main-canvas" hidden>
         <div class="canvas-container">
-            <h3>Container</h3>
+            <h3>create your meme</h3>
             <canvas id="my-canvas" height="400" width="400">
             </canvas>
         </div>
         <div class="control-panel">
-            <section class="add-text">
+            <section class="add-text row1">
                 <label for="add-text"></label>
                 <input type="text" id="add-text" oninput="onTyping(value)">
-                <button onclick="addText()">+</button>
             </section>
-            <button>
-                <input type="color" class="fill-color" value="#ffffff" onchange="onSetFillColor(this.value)" />
-            </button>
-            <button>
-                <input type="color" class="stroke-color" value="#000000" oninput="onSetStrokeColor(this.value)" />
-            </button>
+            <section class="row2">
+                <button onclick="addText()">+</button>
+                <button onclick="onMoveUpLine()">move up</button>
+                <button onclick="onMoveDownLine()">move down</button>
+                <button onclick="onSwichLines()">swich</button>
+            </section>
+            <section class="row3">
+                <button onclick="onIncreaseFont()">A+</button>
+                <button class="decrease" onclick="onDecreaseFont()">A-</button>
+                <button onclick="onAlignLeft()">align left </button>
+                <button onclick="onAlignCenter()">align center</button>
+                <button onclick="onAlignRight()">align right</button>
+            </section>
+            <section class="row4">
+                <button><input type="color" class="fill-color" value="#ffffff"
+                        onchange="onSetFillColor(this.value)" /></button>
+                <button><input type="color" class="stroke-color" value="#000000"
+                        oninput="onSetStrokeColor(this.value)" /></button>
+            </section>
+            <button onclick="downloadCanvas(this)"><a href="#" download="file-name">Download</a></button>
+        </div>
 
-            <a href="#" onclick="downloadCanvas(this)" download="file-name">Download</a>
+        <div class="main-about" hidden>
+            <main>
+                <p>about- hbhvhvkckk</p>
+            </main>
+        </div>
+
+        <div class="main-memes" hidden>
+            <main>
+                <p>memes- hbhvhvkckk</p>
+            </main>
         </div>
     </main>
+
+    <footer class="main-footer">
+
+    </footer>
 
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/services/canvas.service.js"></script>
-    <script src="js/services/meme.service.js"></script>
+    <script src="js/services/memes.service.js"></script>
     <script src="js/controller.js"></script>
 </body>
 

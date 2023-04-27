@@ -6,17 +6,18 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 function initCanvas() {
     gElCanvas = document.querySelector('#my-canvas')
     gCtx = gElCanvas.getContext('2d')
-    window.addEventListener('resize', resizeCanvas)
+    //window.addEventListener('resize', resizeCanvas)
 }
 
 function drawImg(imgId) {
     var img = getImgById(imgId)
+    console.log('img from drawimg:', img)
     const elImg = new Image()
-    elImg.src = img.url // 
-    console.log('elImg:', elImg)
+    elImg.src = img.url
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
     }
+    console.log('finish drawImg')
 }
 
 function updateText(text) {
@@ -33,6 +34,7 @@ function drawText(line) {
     // gCtx.textBaseline = 'middle'
     gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
     gCtx.fillText(line.txt, line.pos.x, line.pos.y)
+    console.log('finish drawText')
 }
 
 function addLine() {
@@ -54,7 +56,7 @@ function downloadCanvas(elLink) {
     elLink.download = 'my-img' // Can change the name of the file
 }
 
-// function drawRect(x, y) {
+// function drawRectstroke(x, y) {
 //     gCtx.strokeStyle = 'white'
 //     gCtx.strokeRect(x, y, 120, 120)
 // }
